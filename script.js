@@ -52,39 +52,34 @@ function generatePassword() {
   var speSplit = characterTypes.speCharacters.split("");
 
   //Array to store possible charactcers for the password generator to pick from
-  var availCharacters = [lowerSplit]
+  var availCharacters = lowerSplit
 
   //Adding characterTypes to array based off user answers
   if (uppCriteria === true) {
-    availCharacters.push(upperSplit);
+    availCharacters = availCharacters.concat(upperSplit);
   }
 
   if (numCriteria === true) {
-    availCharacters.push(numSplit);
+    availCharacters = availCharacters.concat(numSplit);
   }
 
   if (speCriteria === true) {
-    availCharacters.push(speSplit);
+    availCharacters = availCharacters.concat(speSplit);
   }
 
-  console.log(availCharacters)
-  
+  console.log(availCharacters);
 
   function passGenerate() {
     var password = "";
-    while(lenCriteria > password.length) {
-      password += availCharacters[Math.floor(Math.random() * availCharacters.length)];
-    };
+    while (lenCriteria > password.length) {
+      password +=
+        availCharacters[Math.floor(Math.random() * availCharacters.length)];
+    }
 
-  };
+    return password;
+  }
 
-  passGenerate();
+  var password = passGenerate();
 
-
-
-  return;
+  return password;
 }
-
-
-
-
